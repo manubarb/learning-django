@@ -1,0 +1,31 @@
+{% extends 'cadastros/modelo.html' %}
+
+{% block titulo1 %}
+<title>Página Inicial</title>
+{% endblock %}
+
+{% block titulo2 %}
+<h2>Página Inicial</h2>
+{% endblock %}
+
+{% block usuario %}
+
+{% if user.perfil.nome %}
+Olá, {{ user.perfil.nome }}.
+{% else %}
+Atualize <a href="/atualizar">seus dados</a>.
+{% endif %}
+
+{% endblock %}
+
+{% block um %}
+<a href="/cadastrar">Cadastrar</a>
+{% endblock %} 
+
+{% block dois %}
+<a href="/listar">Ver lista</a>
+{% endblock %} 
+
+{% block tres %}
+<a href="/atualizar">Meu perfil</a>
+{% endblock %}

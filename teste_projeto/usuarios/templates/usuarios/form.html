@@ -1,0 +1,32 @@
+{% extends 'cadastros/modelo2.html' %}
+
+{% block titulo %}
+    <title>Entrar</title>
+{% endblock %}
+
+{% block content %}
+
+<h3>{{titulo}}</h3>
+
+{% if request.user.is_authenticated %}
+
+<p>Já está logado.</p>
+<hr>
+{% else %}
+
+<p>Registrar novo usuário.</p>
+
+<hr>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p}}
+
+    <button type="submit">Registrar</button>
+
+</form>
+
+{% endif %}
+
+{% endblock %}

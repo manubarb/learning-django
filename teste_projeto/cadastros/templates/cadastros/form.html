@@ -1,0 +1,27 @@
+{% extends 'cadastros/modelo2.html' %}
+
+{% block titulo %}
+    <title>Cadastro de itens</title>
+{% endblock %}
+
+{% block content %}
+<h3>{{titulo}}</h3>
+<p>Preencha ai faz favor</p>
+
+<hr>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p}}
+
+    <button type="submit">{{botao}}</button>
+
+</form>
+<hr>
+{% if titulo == 'Cadastro de itens'%}
+<a href="/index">Início</a><br>
+<a href="/listar">Ver lista</a>
+{% endif%}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% block content %}
+<h3>Excluir</h3>
+<p>Confirme para excluir o registro definitivamente</p>
+
+<hr>
+
+<form action="" method="POST">
+    <p>Deseja excluir: {{object}} ?</p>
+    {% csrf_token %}
+
+    {{ form.as_p}}
+
+    <button type="submit">Excluir</button>
+
+</form>
+{% endblock %}

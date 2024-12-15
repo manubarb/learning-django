@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+VERSION = '1.0.0'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'teste_projeto.context_processors.app_version',
             ],
         },
     },

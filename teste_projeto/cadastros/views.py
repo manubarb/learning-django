@@ -3,11 +3,11 @@ from django.db.models.query import QuerySet
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, TemplateView
 from .models import Campo
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
-from braces.views import GroupRequiredMixin
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import get_object_or_404, render
+from django.conf import settings
 
-class CampoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
+class CampoCreate(UserPassesTestMixin, LoginRequiredMixin, CreateView):
     group_required = u"admin"
     login_url = reverse_lazy('login')
     model = Campo
@@ -34,7 +34,7 @@ class CampoList(LoginRequiredMixin, ListView):
         self.object_list = Campo.objects.filter(usuario=self.request.user)
         return self.object_list
 
-class CampoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
+class CampoUpdate(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     group_required = u"admin"
     login_url = reverse_lazy('login')
     model = Campo
@@ -46,7 +46,7 @@ class CampoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
         self.object = get_object_or_404(Campo, pk=self.kwargs['pk'], usuario=self.request.user)
         return self.object
     
-class CampoDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+class CampoDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
     group_required = u"admin"
     login_url = reverse_lazy('login')
     model = Campo
